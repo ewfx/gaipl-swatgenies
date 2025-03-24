@@ -1,3 +1,3 @@
 ## Delete this file
 
-Instead place your test files here
+Instead place your test files here for testing
