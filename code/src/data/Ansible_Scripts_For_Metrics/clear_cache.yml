@@ -1,0 +1,9 @@
+---
+- name: Clear Application Cache
+  hosts: app-servers
+  become: yes
+  tasks:
+    - name: Clear cache folder
+      file:
+        path: /var/cache/myapp
+        state: absent

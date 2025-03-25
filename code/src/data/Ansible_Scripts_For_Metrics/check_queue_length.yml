@@ -1,0 +1,11 @@
+---
+- name: Check Message Queue Length
+  hosts: queue-servers
+  become: yes
+  tasks:
+    - name: Check RabbitMQ queue stats
+      command: rabbitmqctl list_queues
+      register: queue_output
+
+    - debug:
+        var: queue_output.stdout

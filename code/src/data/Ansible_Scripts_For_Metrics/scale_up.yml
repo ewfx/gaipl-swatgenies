@@ -1,0 +1,7 @@
+---
+- name: Scale Up Application Nodes
+  hosts: app-servers
+  become: yes
+  tasks:
+    - name: Add a new app node (simulated)
+      command: echo "Scaling up application nodes"

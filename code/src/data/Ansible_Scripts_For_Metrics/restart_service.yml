@@ -1,0 +1,9 @@
+---
+- name: Restart Service
+  hosts: all
+  become: yes
+  tasks:
+    - name: Restart critical service
+      service:
+        name: myservice
+        state: restarted

@@ -1,0 +1,7 @@
+---
+- name: Refresh DB Indexes
+  hosts: db-servers
+  become: yes
+  tasks:
+    - name: Rebuild database indexes
+      command: psql -c "REINDEX DATABASE mydb;"

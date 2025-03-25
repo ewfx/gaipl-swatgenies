@@ -1,0 +1,11 @@
+---
+- name: Check Memory Usage
+  hosts: all
+  become: yes
+  tasks:
+    - name: Get memory usage
+      command: free -m
+      register: memory_output
+
+    - debug:
+        var: memory_output.stdout

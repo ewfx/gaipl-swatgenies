@@ -1,0 +1,11 @@
+---
+- name: Check CPU Usage
+  hosts: all
+  become: yes
+  tasks:
+    - name: Get CPU usage
+      command: top -bn1 | grep "Cpu(s)"
+      register: cpu_output
+
+    - debug:
+        var: cpu_output.stdout
