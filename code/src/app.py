@@ -131,10 +131,7 @@ with gr.Blocks() as demo:
         with gr.Column(scale=2):
             pass
 
-    if search_mode == "Search by Description":
-        submit_btn.click(fn=generate_gradio_data, inputs=[dropdown_input_value,text_input_value,search_mode], outputs=[table_output, chart])
-    else:
-        submit_btn.click(fn=generate_gradio_data, inputs=[dropdown_input_value,text_input_value,search_mode], outputs=[table_output, chart])
+    submit_btn.click(fn=generate_gradio_data, inputs=[dropdown_input_value,text_input_value,search_mode], outputs=[table_output, chart])
 
     # After processing, show the results
     submit_btn.click(
