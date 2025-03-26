@@ -1,0 +1,11 @@
+---
+- name: Check Battery Temperature
+  hosts: edge-devices
+  become: yes
+  tasks:
+    - name: Read battery temperature
+      command: cat /sys/class/power_supply/BAT0/temp
+      register: temp_output
+
+    - debug:
+        var: temp_output.stdout

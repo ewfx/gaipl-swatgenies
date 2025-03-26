@@ -1,0 +1,11 @@
+---
+- name: Check Blocked DB Connections
+  hosts: db-servers
+  become: yes
+  tasks:
+    - name: Show blocked connections
+      command: psql -c "SELECT * FROM pg_stat_activity WHERE wait_event IS NOT NULL;"
+      register: blocked_output
+
+    - debug:
+        var: blocked_output.stdout

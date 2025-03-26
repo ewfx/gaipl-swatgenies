@@ -1,0 +1,11 @@
+---
+- name: Check Authentication Failures
+  hosts: auth-servers
+  become: yes
+  tasks:
+    - name: Tail auth log
+      command: tail -n 50 /var/log/auth.log
+      register: auth_output
+
+    - debug:
+        var: auth_output.stdout

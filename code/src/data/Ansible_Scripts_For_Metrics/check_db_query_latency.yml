@@ -1,0 +1,11 @@
+---
+- name: Check DB Query Latency
+  hosts: db-servers
+  become: yes
+  tasks:
+    - name: Run sample DB query
+      command: psql -c "SELECT now();"
+      register: query_output
+
+    - debug:
+        var: query_output.stdout

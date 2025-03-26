@@ -1,0 +1,11 @@
+---
+- name: Check Application Errors
+  hosts: app-servers
+  become: yes
+  tasks:
+    - name: Tail error logs
+      command: tail -n 100 /var/log/app/error.log
+      register: error_output
+
+    - debug:
+        var: error_output.stdout

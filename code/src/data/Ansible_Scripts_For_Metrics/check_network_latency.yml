@@ -1,0 +1,11 @@
+---
+- name: Check Network Latency
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ping test
+      command: ping -c 4 8.8.8.8
+      register: ping_output
+
+    - debug:
+        var: ping_output.stdout

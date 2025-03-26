@@ -1,0 +1,11 @@
+---
+- name: Check App Response Time
+  hosts: app-servers
+  become: yes
+  tasks:
+    - name: Perform curl to app endpoint
+      command: curl -w "@curl-format.txt" -o /dev/null -s http://localhost
+      register: response_output
+
+    - debug:
+        var: response_output.stdout

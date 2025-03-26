@@ -1,0 +1,9 @@
+---
+- name: Check Data Ingestion Pipeline
+  hosts: ingestion-nodes
+  become: yes
+  tasks:
+    - name: Check ingestion service status
+      service:
+        name: ingestion-service
+        state: started
