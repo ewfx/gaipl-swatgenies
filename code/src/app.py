@@ -64,7 +64,7 @@ def generate_gradio_data(dropdown_value, textbox_value, search_mode):
 
 # Function to reset inputs and outputs
 def reset_inputs():
-    return gr.update(value=None, visible=False), gr.update(value="", visible=False), gr.update(value=""), gr.update(visible=False), gr.update(visible=False),gr.update(visible=False), [], []
+    return gr.update(value=None, visible=False), gr.update(value="", visible=False), gr.update(value=""), gr.update(visible=False), gr.update(visible=False),gr.update(visible=False), [], [], gr.update(value="", visible=False)
 
 
 def chatbot_response(user_message, chatbot_history, dropdown_value, search_mode):
@@ -135,21 +135,21 @@ with gr.Blocks() as demo:
             chart = gr.Plot(label="Telemetry Graph", visible=False, elem_id="custom-chart")
 
         with gr.Column(scale=2):
-            affected_zones_display = gr.Textbox()
+            affected_zones_display = gr.Textbox(label="More Info", visible=False)
 
     submit_btn.click(fn=generate_gradio_data, inputs=[dropdown_input_value,text_input_value,search_mode], outputs=[table_output, chart, affected_zones_display])
 
     # After processing, show the results
     submit_btn.click(
-        fn=lambda: [gr.update(visible=True), gr.update(visible=True), gr.update(visible=True)],
+        fn=lambda: [gr.update(visible=True), gr.update(visible=True), gr.update(visible=True), gr.update(visible=True)],
         inputs=None,
-        outputs=[table_output, chart, chatbot_section])
+        outputs=[table_output, chart, chatbot_section, affected_zones_display])
 
     # Use gr.State to manage the chat history
     chatbot_history = gr.State([])  # Initialize empty list for chatbot history
 
     # Clear button functionality
-    clear_btn.click(fn=reset_inputs, inputs=None, outputs=[dropdown_input_value,text_input_value,search_mode,table_output, chart, chatbot_section, chatbot, chatbot_history])
+    clear_btn.click(fn=reset_inputs, inputs=None, outputs=[dropdown_input_value,text_input_value,search_mode,table_output, chart, chatbot_section, chatbot, chatbot_history, affected_zones_display])
 
     # When user submits a message in the chatbot input, show the chatbot and update the history
     user_input.submit(fn=chatbot_response, inputs=[user_input, chatbot_history, dropdown_input_value, search_mode], outputs=[chatbot, user_input])
