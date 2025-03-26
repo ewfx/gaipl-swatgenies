@@ -1,0 +1,9 @@
+gradio
+pandas
+numpy
+sklearn
+mistralai
+python-docx
+openai
+langchain
+langchain_community
