@@ -234,9 +234,10 @@ def affected_areas(df_incident_filtered: pd.DataFrame,
     any_exceed = exceeds.any(axis=1).any()
 
     if any_exceed:
-        affected_zones.update(df_configuration_data[df_configuration_data.CI_Name.str.strip() == 'Generic-System'][['Upstream_Dependencies','Downstream_Dependencies']].T.to_dict()[0])
-        affected_zones_str = "\n\n".join(f"{key}  :  {value}" for key, value in affected_zones.items())
         active_metrics = exceeds.columns[exceeds.all()].to_list()
+        affected_zones.update(df_configuration_data[df_configuration_data.CI_Name.str.strip() == 'Generic-System'][['Upstream_Dependencies','Downstream_Dependencies']].T.to_dict()[0])
+        affected_zones['Performance Threshold Alerts'] = active_metrics
+        affected_zones_str = "\n\n".join(f"{key}  :  {value}" for key, value in affected_zones.items())
 
         return affected_zones_str, active_metrics
 
