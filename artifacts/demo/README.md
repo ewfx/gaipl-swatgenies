@@ -1,5 +1,7 @@
-Replace this file with files that you would like to use for your demo. This may include
 
-- A presentation/deck in pdf or pptx format
-- A demo video (screen capture) in mp4 or other popular video formats
-- Any other document describing your solution (in pdf or md format)
+
+- A presentation/deck is uploaded in same directory with name AIOps360 – Intelligent Support Command Center
+- A demo video (screen capture) is uploaded file name app_video_demo.mp4 has been uploaded in the same directory showing up teh user journey in teh portal
+- Hugging Face URL where the solution is hosted is
+  https://huggingface.co/spaces/sid123321/Integrated_Platform_Hackathon2025
+  
