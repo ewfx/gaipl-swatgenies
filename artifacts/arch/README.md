@@ -1,3 +1,1 @@
-Replace this file with a document that describes the architecture and design of your solution architecture. This may include
-    - An architecture drawing exported into a png/jpeg format image
-    - A document in pdf or md format that describes your solution
+![Arch_diagram](https://github.com/user-attachments/assets/7d4aa9d6-1fb7-482b-ad4a-057db598b3f3)
